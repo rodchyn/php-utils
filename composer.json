@@ -1,0 +1,17 @@
+{
+    "name": "rodchyn/utils",
+    "type": "library",
+    "description": "Utils Library for every day",
+    "keywords": ["utils", "inflector"],
+    "homepage": "https://github.com/rodchyn",
+    "license": "LGPL",
+    "authors": [
+        {"name": "Yura Rodchyn", "email": "rodchyn@gmail.com"},
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-0": { "Rodchyn\\Utils": "lib/" }
+    }
+}
