@@ -1,5 +1,7 @@
 <?php
 
+namespace Rodchyn\Utils;
+
 /**
 * Inflector for pluralize and singularize English nouns.
 * 
