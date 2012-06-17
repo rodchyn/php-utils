@@ -4,7 +4,7 @@ namespace Rodchyn\Utils;
 
 /**
 * Inflector for pluralize and singularize English nouns.
-* 
+*
 * @author    Yura Rodchyn <rodchyn@gmail.com>
 * @copyright Copyright (c) 2012
 * @license   http://www.opensource.org/licenses/lgpl-license.php LGPL
@@ -14,7 +14,7 @@ class Inflector
 
     /**
     * Pluralizes English nouns.
-    * 
+    *
     * @access public
     * @static
     * @param    string    $word    English noun to pluralize
@@ -53,13 +53,13 @@ class Inflector
 
         $lowercased_word = strtolower($word);
 
-        foreach ($uncountable as $_uncountable){
-            if(substr($lowercased_word,(-1*strlen($_uncountable))) == $_uncountable){
+        foreach ($uncountable as $_uncountable) {
+            if (substr($lowercased_word,(-1*strlen($_uncountable))) == $_uncountable) {
                 return $word;
             }
         }
 
-        foreach ($irregular as $_plural=> $_singular){
+        foreach ($irregular as $_plural=> $_singular) {
             if (preg_match('/('.$_plural.')$/i', $word, $arr)) {
                 return preg_replace('/('.$_plural.')$/i', substr($arr[0],0,1).substr($_singular,1), $word);
             }
@@ -70,13 +70,14 @@ class Inflector
                 return preg_replace($rule, $replacement, $word);
             }
         }
+
         return false;
 
     }
 
     /**
     * Singularizes English nouns.
-    * 
+    *
     * @access public
     * @static
     * @param    string    $word    English noun to singularize
@@ -121,13 +122,13 @@ class Inflector
         'move' => 'moves');
 
         $lowercased_word = strtolower($word);
-        foreach ($uncountable as $_uncountable){
-            if(substr($lowercased_word,(-1*strlen($_uncountable))) == $_uncountable){
+        foreach ($uncountable as $_uncountable) {
+            if (substr($lowercased_word,(-1*strlen($_uncountable))) == $_uncountable) {
                 return $word;
             }
         }
 
-        foreach ($irregular as $_plural=> $_singular){
+        foreach ($irregular as $_plural=> $_singular) {
             if (preg_match('/('.$_singular.')$/i', $word, $arr)) {
                 return preg_replace('/('.$_singular.')$/i', substr($arr[0],0,1).substr($_plural,1), $word);
             }
@@ -145,13 +146,13 @@ class Inflector
     /**
     * Converts an underscored or CamelCase word into a English
     * sentence.
-    * 
+    *
     * The titleize function converts text like "WelcomePage",
     * "welcome_page" or  "welcome page" to this "Welcome
     * Page".
     * If second parameter is set to 'first' it will only
     * capitalize the first character of the title.
-    * 
+    *
     * @access public
     * @static
     * @param    string    $word    Word to format as tile
@@ -163,16 +164,17 @@ class Inflector
     public static function titleize($word, $uppercase = '')
     {
         $uppercase = $uppercase == 'first' ? 'ucfirst' : 'ucwords';
+
         return $uppercase(Inflector::humanize(Inflector::underscore($word)));
     }
 
     /**
     * Returns given word as CamelCased
-    * 
+    *
     * Converts a word like "send_email" to "SendEmail". It
     * will remove non alphanumeric character from the word, so
     * "who's online" will be converted to "WhoSOnline"
-    * 
+    *
     * @access public
     * @static
     * @see variablize
@@ -186,12 +188,12 @@ class Inflector
 
     /**
     * Converts a word "into_it_s_underscored_version"
-    * 
+    *
     * Convert any "CamelCased" or "ordinary Word" into an
     * "underscored_word".
-    * 
+    *
     * This can be really useful for creating friendly URLs.
-    * 
+    *
     * @access public
     * @static
     * @param    string    $word    Word to underscore
@@ -206,14 +208,14 @@ class Inflector
 
     /**
     * Returns a human-readable string from $word
-    * 
+    *
     * Returns a human-readable string from $word, by replacing
     * underscores with a space, and by upper-casing the initial
     * character by default.
-    * 
+    *
     * If you need to uppercase all the words you just have to
     * pass 'all' as a second parameter.
-    * 
+    *
     * @access public
     * @static
     * @param    string    $word    String to "humanize"
@@ -224,16 +226,17 @@ class Inflector
     public static function humanize($word, $uppercase = '')
     {
         $uppercase = $uppercase == 'all' ? 'ucwords' : 'ucfirst';
+
         return $uppercase(str_replace('_',' ',preg_replace('/_id$/', '',$word)));
     }
 
     /**
     * Same as camelize but first char is underscored
-    * 
+    *
     * Converts a word like "send_email" to "sendEmail". It
     * will remove non alphanumeric character from the word, so
     * "who's online" will be converted to "whoSOnline"
-    * 
+    *
     * @access public
     * @static
     * @see camelize
@@ -243,15 +246,16 @@ class Inflector
     public static function variablize($word)
     {
         $word = Inflector::camelize($word);
+
         return strtolower($word[0]).substr($word,1);
     }
 
     /**
     * Converts a class name to its table name according to rails
     * naming conventions.
-    * 
+    *
     * Converts "Person" to "people"
-    * 
+    *
     * @access public
     * @static
     * @see classify
@@ -266,9 +270,9 @@ class Inflector
     /**
     * Converts a table name to its class name according to rails
     * naming conventions.
-    * 
+    *
     * Converts "people" to "Person"
-    * 
+    *
     * @access public
     * @static
     * @see tableize
@@ -282,9 +286,9 @@ class Inflector
 
     /**
     * Converts number to its ordinal English form.
-    * 
+    *
     * This method converts 13 to 13th, 2 to 2nd ...
-    * 
+    *
     * @access public
     * @static
     * @param    integer    $number    Number to get its ordinal value
@@ -292,9 +296,9 @@ class Inflector
     */
     public static function ordinalize($number)
     {
-        if (in_array(($number % 100),range(11,13))){
+        if (in_array(($number % 100),range(11,13))) {
             return $number.'th';
-        }else{
+        } else {
             switch (($number % 10)) {
                 case 1:
                 return $number.'st';
