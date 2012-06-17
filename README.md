@@ -1,4 +1,4 @@
-php-utils
+PHP Utils for every day
 =========
 
-PHP Utils for every days
+Simple classes for self usage
