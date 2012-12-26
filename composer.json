@@ -2,7 +2,7 @@
     "name": "rodchyn/utils",
     "type": "library",
     "description": "Utils Library for every day",
-    "keywords": ["utils", "inflector"],
+    "keywords": ["utils", "inflector", "Neural network", "NeuralNetwork"],
     "homepage": "https://github.com/rodchyn",
     "license": "LGPL",
     "authors": [
