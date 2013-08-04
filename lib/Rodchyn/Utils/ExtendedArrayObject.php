@@ -6,7 +6,7 @@ namespace Rodchyn\Utils;
  * Class ExtendedArrayObject
  * @package Rodchyn\Utils
  */
-class ExtendedArrayObject extends ArrayObject {
+class ExtendedArrayObject extends \ArrayObject {
 
     /**
      * @param $value mixed
