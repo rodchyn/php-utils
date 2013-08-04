@@ -12,7 +12,7 @@ class ExtendedArrayObject extends \ArrayObject {
      * @param $value mixed
      */
     public function prepend($value) {
-        $array = (array)$this;
+        $array = $this->getArrayCopy();
         array_unshift($array, $value);
         $this->exchangeArray($array);
     }
@@ -22,7 +22,7 @@ class ExtendedArrayObject extends \ArrayObject {
      * @param $position int
      */
     public function insert($insert, $position) {
-        $array = (array)$this;
+        $array = $this->getArrayCopy();
         array_splice($array, $position, 0, $insert);
         $this->exchangeArray($array);
     }
